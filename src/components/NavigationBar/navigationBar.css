@@ -1,0 +1,32 @@
+ul {
+    background: rgba(104, 92, 171, 0.3);
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.active {
+    background: #449ab9;
+    color: #010101;
+  }
+
+/* ============ MEDIA QUERIES (MEDIUM DEVICES) ============ */
+@media screen and (max-width: 1024px){
+    ul {
+        bottom: 41%;
+        right: -13.5%;
+    }
+}
+
+/* ============ MEDIA QUERIES (SMALL DEVICES) ============ */
+@media screen and (max-width: 600px){
+    header {
+        height: 100vh;
+    }
+
+    .header__socials,
+    .scroll__down,
+    ul {
+        display: None;
+    }
+}

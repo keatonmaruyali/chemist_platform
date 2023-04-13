@@ -1,0 +1,149 @@
+/* Einsteinium */
+
+/* .element-99 {
+  background-image: url("../images/einstein.jpg");
+  background-size: contain;
+} */
+
+.appearance {
+  margin-bottom: 0.5vw;
+}
+
+.atom_info {
+  margin-bottom: 0.5vw;
+  color: #998100;
+}
+
+/* Helium to the top right  */
+.element-2 {
+  grid-column-start: -2;
+}
+
+/* Boron & Alumunium to the right  */
+.element-5,
+.element-13 {
+  grid-column-start: 13;
+}
+
+/* Lanthinide & Actinoid split  */
+.element-58,
+.element-90 {
+  grid-column-start: 3;
+}
+
+/* I DID NOT KNOW THERE WAS 119th ONE! */
+
+.element-119 {
+  grid-column-start: -2;
+}
+
+/* Categories and Groups */
+
+/* Noble Gas  */
+.noble {
+  background: #f3d2e8;
+  background: linear-gradient(60deg, #f3d2e8, #e40c9c);
+}
+
+/* Alkali Metal  */
+.alkali {
+  background: #f88379;
+  background: linear-gradient(60deg, #e9b2ad, #f11b07);
+}
+
+/* Alkaline Earth Metal  */
+.alkaline {
+  background: #ffc3a0;
+  background: linear-gradient(60deg, #ffc3a0, #eb5d0b);
+}
+
+/* Transition Metal  */
+.transition {
+  background: #e9ff08;
+  background: linear-gradient(60deg, #e9ff08, #e2b00a);
+}
+
+/* Polyatomic Non Metal  */
+.polyatomic {
+  background: #a3d2d5;
+  background: linear-gradient(60deg, #a3d2d5, #148088);
+}
+
+/* Diatomic Non Metal  */
+.diatomic {
+  background: #a3d5bf;
+  background: linear-gradient(60deg, #a3d5bf, #39a576);
+}
+
+/* Post Transition Metal  */
+.post-transition {
+  background: #8eb1e7;
+  background: linear-gradient(60deg, #8eb1e7, #0960e4);
+}
+
+/* Metalloid  */
+.metalloid {
+  background: #5ed89c;
+  background: linear-gradient(90deg, #5ed89c, #15864e);
+}
+
+/* Lanthanide  */
+.lanthanide {
+  background: #c9f;
+  background: linear-gradient(90deg, #c9f, rgb(108, 13, 202));
+  /* Put a space to seperate the split table  */
+  margin-top: 2.5vw;
+}
+
+/* Actinide  */
+.actinide {
+  background: #ad87bd;
+  background: linear-gradient(90deg, #ad87bd, #ad1deb);
+}
+
+/* The Unknown Element  */
+.unknown {
+  background: #cff;
+  background: linear-gradient(90deg, #cff, rgb(13, 173, 173));
+}
+
+/* Disable the top space for the first lathenide which sits inside the table  */
+.element-57 {
+  margin: 0;
+}
+
+/* Every element box  */
+.element {
+  cursor: pointer;
+  width: 6rem;
+  height: 6rem;
+  padding: 3px;
+  /* border: 1px solid #333; */
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.number {
+  float: left;
+  font-size: 1rem;
+  position: absolute;
+}
+
+.symbol {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 3rem;
+}
+
+.element-name {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.element.active {
+  /* background: #fff; */
+  background: #000;
+  color: #fff;
+  /* border-color: yellow; */
+}
