@@ -15,7 +15,8 @@ class ChemspipyService():
         cleaned_compounds = [
             {
                 'record_id': res._record_id,
-                # 'image': res.image,
+                'image': res.image_url,
+                'commmonName': res.common_name,
                 'smiles':  res._details['smiles'],
                 'formula':  res._details['formula'],
                 'averageMass':  res._details['averageMass'],
