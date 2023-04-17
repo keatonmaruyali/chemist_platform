@@ -7,12 +7,12 @@ import './navigationBar.css';
 
 const NavigationBar = () => {
   return (
-    <ul>
-      <NavLink style={{ padding: '0.9rem 2rem' }} to='/'>Home</NavLink>
-      <NavLink style={{ padding: '0.9rem 2rem' }} to='about'>About</NavLink>
-      <NavLink style={{ padding: '0.9rem 2rem' }} to='periodictable'>Periodic Table</NavLink>
-      <NavLink style={{ padding: '0.9rem 2rem' }} to='chemspider'>ChemSpider</NavLink>
-    </ul>
+    <div className='nav_bar'>
+      <NavLink style={{ padding: '0.9rem 2rem', fontSize: '1.4rem', fontWeight: 'bold' }} to='/'>Home</NavLink>
+      <NavLink style={{ padding: '0.9rem 2rem', fontSize: '1.4rem', fontWeight: 'bold' }} to='about'>About</NavLink>
+      <NavLink style={{ padding: '0.9rem 2rem', fontSize: '1.4rem', fontWeight: 'bold'}} to='periodictable'>Periodic Table</NavLink>
+      <NavLink style={{ padding: '0.9rem 2rem', fontSize: '1.4rem', fontWeight: 'bold' }} to='chemspider'>ChemSpider</NavLink>
+    </div>
   )
 }
 

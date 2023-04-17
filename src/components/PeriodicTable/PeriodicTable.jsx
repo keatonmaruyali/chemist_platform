@@ -1,22 +1,22 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect, useState } from "react";
 import { elements } from "../../data/_data";
 import Element from "../Elements/Element";
 import './periodicTable.css';
 import "../Elements/elements.css";
 
 
-export default class PeriodicTable extends Component {  
-  state = {
-    showInfo: false,
-    element: {}
+const PeriodicTable = () => {
+  const [showElementCard, setShowElementCard] = useState(false);
+  const [elementDetails, setElementDetails] = useState({});
+
+  const showInfo = num => {
+    setElementDetails(elements[num]);
+    setShowElementCard(true);
   }
 
-  showInfo = num => {
-    this.setState({ showInfo: true, element: elements[num] })
-  }
-
-  closeInfo = () => {
-    this.setState({ showInfo: false })
+  const closeInfo = () => {
+    setElementDetails({});
+    setShowElementCard(false);
   }
 
   /**
@@ -27,53 +27,65 @@ export default class PeriodicTable extends Component {
    * @param {number} end
    * @return {Array<Object>}
    */
-  populateElements = (start, end) => {
+  const populateElements = (start, end) => {
     let items = []
     for (let i = start; i <= end; i++) {
-      items.push(<Element showInfo={this.showInfo} num={i} />)
+      items.push(<Element showInfo={showInfo} num={i} />)
     }
     return items
   }
 
-  render() {
-    let {
-      name,
-      summary,
-      symbol,
-      category,
-      number,
-      source,
-      appearance,
-      atomic_mass,
-      molar_heat,
-      density,
-      melt,
-      boil
-    } = this.state.element
-    
-    return (
+  const mouseClickHandler = (event) => {
+    if (event.target.className === 'bg') {
+      closeInfo();
+    };
+  }
+
+
+  useEffect(() => {
+    document.addEventListener("click", mouseClickHandler);
+  })
+
+  let {
+    name,
+    summary,
+    symbol,
+    category,
+    number,
+    source,
+    appearance,
+    atomic_mass,
+    molar_heat,
+    density,
+    melt,
+    boil
+  } = elementDetails;
+
+
+
+  return (
       <div className="periodictablewrapper">
         <div id="periodictable">
           {/* Elements 1-4 */}
-          {this.populateElements(1, 4)}
+          {populateElements(1, 4)}
           {/* Populating elements from 5-57 */}
-          {this.populateElements(5, 57)}
+          {populateElements(5, 57)}
           {/* Lanthanoids split 72-89 */}
-          {this.populateElements(72, 89)}
+          {populateElements(72, 89)}
           {/* Actinoids split 104-119*/}
-          {this.populateElements(104, 118)}
+          {populateElements(104, 118)}
           {/* Lanthenoids 58-71*/}
-          {this.populateElements(58, 71)}
+          {populateElements(58, 71)}
           {/* Actionoids 90-103 */}
-          {this.populateElements(90, 103)}
+          {populateElements(90, 103)}
         </div>
        
-        {this.state.showInfo && (
+        {showElementCard && (
           <div className="bg">
             <div id="element_card">
               <div id="element-box" className={`${category}`}>
                 <div
-                  onClick={this.closeInfo}
+                  onClick={closeInfo}
                   className="close-button"
                   title="Close Info"
                 >
@@ -99,11 +111,9 @@ export default class PeriodicTable extends Component {
                     {melt && <span> | Melt: {melt}K</span>}
                     {boil && <span> | Boil: {boil}K</span>}
                   </div>
-                  <div>
-                    {summary} ...{" "}
-                    <a target="_blank" href={source}>
-                      Source
-                    </a>
+                  <div>{summary}</div>
+                  <div className="more_info">
+                    <a target={source} href={source}>More Info</a>
                   </div>
                 </div>
               </div>
@@ -113,4 +123,5 @@ export default class PeriodicTable extends Component {
       </div>
     )
   }
-}
+
+export default PeriodicTable

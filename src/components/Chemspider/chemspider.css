@@ -1,0 +1,18 @@
+.results_container {
+    background: rgba(104, 92, 171, 0.3);
+    height: 46rem;
+    /* padding: 3rem; */
+    margin-top: 2rem;
+}
+
+.chemspider_search > input,
+.chemspider_search > button {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
+
+button {
+    cursor: pointer;
+}
