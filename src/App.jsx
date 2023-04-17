@@ -6,8 +6,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Chemspider from './components/Chemspider/Chemspider';
-import PeriodicTable from './components/PeriodicTable/PeriodicTable';
-;
+import PeriodicTableOfElements from './pages/PeriodicTableOfElements/PeriodicTableOfElements';
 
 
 function App() {  
@@ -17,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="about" element={<About/>}/>
-        <Route path="periodictable" element={<PeriodicTable />}/>
+        <Route path="periodictable" element={<PeriodicTableOfElements />}/>
         <Route path="chemspider" element={<Chemspider />}/>
       </Routes>
     </>
