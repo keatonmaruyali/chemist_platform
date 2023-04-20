@@ -1,4 +1,16 @@
 module.exports = {
+  categories: [
+    'diatomic nonmetal',
+    'noble gas',
+    'alkali metal',
+    'alkaline earth metal',
+    'metalloid',
+    'polyatomic nonmetal',
+    'post-transition metal',
+    'lanthanide',
+    'unknown',
+    'actinide',
+  ],
   elements: [
     {
       name: 'None',

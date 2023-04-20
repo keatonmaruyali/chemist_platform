@@ -1,0 +1,25 @@
+.periodic_table-game {
+    margin: 3rem 0 1rem 3rem;
+}
+
+.game-button {
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.start-button {
+    padding: 0.5rem;
+}
+
+.popup_contaier {
+    /* display: grid; */
+    /* grid-template-rows: auto 15vh auto; */
+    width: 25vw;
+    height: max-content;
+    top: 25%;
+    left: 35%;
+    position: absolute;
+    background: white;
+    z-index: 1;
+    border-radius: 2rem;
+}
