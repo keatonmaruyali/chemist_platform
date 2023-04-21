@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './periodicTableGame.css';
+import { NavLink } from "react-router-dom";
 
 import { elements } from "../../data/_data";
 

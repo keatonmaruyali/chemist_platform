@@ -1,0 +1,23 @@
+.periodic_table-nav {
+    float: left;
+}
+
+.periodic_table-nav {
+    height: 50rem;
+}
+
+.periodic_table-nav > div {
+    background: rgba(138, 91, 91, 0.3);
+    padding: 1.5rem;
+    margin: 1rem 4rem 0 1rem;
+    border-radius: 2rem;
+    width: 7rem;
+    text-align: center;
+}
+
+
+.periodic_table-nav > div:hover {
+    background: rgba(70, 45, 45, 0.3);
+    transition: all 400ms ease;
+    cursor: pointer;
+}
