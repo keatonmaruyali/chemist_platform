@@ -3,6 +3,9 @@ import './periodicTableGame.css';
 
 import { elements } from "../../data/_data";
 
+const AllElements = elements.elements;
+const questionKeys = elements.questionKeys;
+console.log(questionKeys);
 
 const generateRandomNumbers = (times) => {
   const randoms = []
@@ -27,6 +30,12 @@ const shuffle = () => {
   return array[1];
 };
 
+const questionKey = () => {
+  let questionsObjLen = Object.keys(questionKeys).length;
+  let questionIndex = Math.floor(Math.random() * (questionsObjLen - 0))
+  return [questionKeys[questionIndex].answer, questionKeys[questionIndex].question]
+};
+
 const PeriodicTableGame = () => {
   const [answer, setAnswer] = useState('');
   const [mcQ, setMcQ] = useState({});
@@ -42,19 +51,20 @@ const PeriodicTableGame = () => {
     const randNum = generateRandomNumbers(4);
     const ranIndex = shuffle();
 
-    let answerOptions = []
+    const questionObj = questionKey();
+    let answerOptions = [];
     let questionDetails = '';
 
     for (const [index, value] of randNum.entries()) {
       if (index == ranIndex) {
         answerOptions.push({
-          'answerText': elements[value].name,
+          'answerText': AllElements[value][questionObj[0]],
           'isCorrect': true,
         })
-        questionDetails = elements[value].symbol;
+        questionDetails = AllElements[value][questionObj[1]];
       } else {
         answerOptions.push({
-          'answerText': elements[value].name,
+          'answerText': AllElements[value][questionObj[0]],
           'isCorrect': false,
         })
       }
@@ -62,7 +72,7 @@ const PeriodicTableGame = () => {
   
     var questions = [
       {
-        'question': 'What is the name of the compound with this symbol?',
+        'question': `What is the ${questionObj[0]} of the compound with this ${questionObj[1]}?`,
         'questionDetails': questionDetails,
         'answerOptions': answerOptions,
       }
@@ -94,8 +104,10 @@ const PeriodicTableGame = () => {
 
   return (
     <div>
-      {
-        showStart && <button className='start-button' onClick={generateQuestions}>Start</button>
+      {showStart && <button 
+        className='start-button'
+        onClick={generateQuestions}
+        >Start</button>
       }
       {
         Object.keys(mcQ).length !== 0 && (

@@ -21,7 +21,7 @@ export default class Element extends Component {
 
   render() {
     let { num } = this.props;
-    let element = elements[num];
+    let element = elements.elements[num];
     return (
       <div
         title={element.name}

@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { elements } from "../../data/_data";
 import Element from "../Elements/Element";
 import './periodicTable.css';
@@ -9,8 +9,9 @@ const PeriodicTable = () => {
   const [showElementCard, setShowElementCard] = useState(false);
   const [elementDetails, setElementDetails] = useState({});
 
+  const alElements = elements.elements;
   const showInfo = num => {
-    setElementDetails(elements[num]);
+    setElementDetails(alElements[num]);
     setShowElementCard(true);
   }
 
