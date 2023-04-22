@@ -95,6 +95,9 @@ const PeriodicTableGame = () => {
       generateQuestions();
     } else {
       setCorrect(false);
+      setTimeout(() => {
+        setCorrect(true);
+      }, 1500);
     }
   };
 
@@ -103,7 +106,7 @@ const PeriodicTableGame = () => {
   }, [mcQ]);
 
   return (
-    <div>
+    <div className='periodic_table-game-container'>
       {showStart && <button 
         className='start-button'
         onClick={generateQuestions}
@@ -111,21 +114,22 @@ const PeriodicTableGame = () => {
       }
       {
         Object.keys(mcQ).length !== 0 && (
-        <div className='periodic_table-game'>
-        <h3>Score: {score}</h3>
-        <p>{mcQ[0].question} - {mcQ[0].questionDetails}</p>
+        <div className='periodic_table-game-choice'>
+          <h3>Score: {score}</h3>
+          <p>{mcQ[0].question}</p>
+          <p>{mcQ[0].questionDetails}</p>
             <form name='answerOptions'className="answer_div" onSubmit={handleFormSubmit}>
             {mcQ[0].answerOptions.map((answerOption, index) => (
-                <div>
-                <input
-                    id={index}
-                    type="radio"
-                    checked={index === answer}
-                    onChange={() => setAnswer(index)}
-                    value={answerOption.answerText}
-                    name="answerOption"
-                />
-                {answerOption.answerText}
+                <div className='periodic_table-game-choice-content'>
+                  <input
+                      id={index}
+                      type="radio"
+                      checked={index === answer}
+                      onChange={() => setAnswer(index)}
+                      value={answerOption.answerText}
+                      name="answerOption"
+                  />
+                  {answerOption.answerText}
                 </div>
             ))}
             <input disabled={answer===''} className='game-button' type="submit" value="Submit" />
@@ -136,6 +140,7 @@ const PeriodicTableGame = () => {
         </div>
         )
       }
+      
     </div>
   );
 }

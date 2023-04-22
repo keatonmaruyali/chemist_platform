@@ -1,39 +1,48 @@
-.periodic_table-page-container {
-    display: inline-block;
-    height: 65rem;
-    width: 100%;
+.periodic__table__page-container {
+    display: grid;
+    grid-template-columns: 12.5% 87%;
+    gap: 1vh;
+    height: 70vh;
 }
 
-.periodic_table-nav {
+.periodic__table__page-nav {
+    margin-top: 1vh;
+    height: calc(100% - 1vh);
+}
+
+.periodic__table__page-nav-content {
     background: rgba(108, 234, 112, 0.841);
-    border: 0;
-    float: left;
-    width: 13rem;
-    height: 60rem;
-    margin-right: 2rem;
-    padding: 1rem 0 0 0;
+    height: calc(100% - 4vh);
     border-radius: 1rem;
+    padding: 2vh 1vh 2vh 1vh;
 }
 
 
-.periodic_table-nav > div {
+.periodic__table__page-nav-content > div {
     background: rgba(3, 145, 22, 0.3);
-    padding: 1.5rem;
-    margin: 1rem 4rem 0 1rem;
+    padding: 1vh;
+    margin-bottom: 1vh;
     border-radius: 2rem;
-    width: 7rem;
+    font-size: 2vh;
     text-align: center;
 }
 
 
-.periodic_table-nav > div:hover {
+.periodic__table__page-nav-content > div:hover {
     background: rgba(14, 75, 1, 0.3);
     color: rgb(241, 246, 242);
     transition: all 400ms ease;
     cursor: pointer;
 }
 
-.periodic_table-nav > div:active {
+.periodic__table__page-nav-content > div:active {
     background: rgba(18, 18, 18, 0.3);
 
+}
+
+.periodic__table__page-content {
+    margin-top: 1vh;
+    height: calc(100% - 1vh);
+    background: rgba(224, 222, 222, 0.841);
+    border-radius: 1rem;
 }

@@ -11,7 +11,6 @@ const PeriodicTableOfElements = () => {
   const resetDisplay = () => {
     setDisplayTable(false);
     setDisplayGame(false);
-    console.log('Resetting');
   };
 
   const handleOnClick = (e) => {
@@ -30,16 +29,18 @@ const PeriodicTableOfElements = () => {
   };
 
   return (
-    <div className='periodic_table-page-container'>
-        <h2>Periodic Table of Elements</h2>
-        <nav className='periodic_table-nav'>
+    <div className='periodic__table__page-container'>
+      <div className='periodic__table__page-nav'>
+        {/* <h2>Periodic Table of Elements</h2> */}
+        <nav className='periodic__table__page-nav-content'>
           <div id="periodic-table" onClick={handleOnClick}>Periodic Table</div>
           <div id="game" onClick={handleOnClick}>Game</div>
         </nav>
-        <div className='periodic_table-content'>  
-            {displayTable && (<PeriodicTable />)}
-            {displayGame && (<PeriodicTableGame />)}
-        </div>
+      </div>
+      <div className='periodic__table__page-content'>  
+          {displayTable && (<PeriodicTable />)}
+          {displayGame && (<PeriodicTableGame />)}
+      </div>
     </div>
   )
 }

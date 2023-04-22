@@ -1,17 +1,12 @@
 .periodictablewrapper {
-    /* width: 90%; */
-    margin: 2rem;
-    /* margin-top: 2vw;
-    margin-bottom: 2vw; */
-    /* max-width: 1700px; */
+    height: 100%;
+    background: white;
 }
 
 #periodictable {
     display: grid;
     grid-template-columns: repeat(17, auto) 1fr;
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 1.5rem;
 }
 
 .bg{
