@@ -43,7 +43,11 @@ const PeriodicTableGame = () => {
   const [correct, setCorrect] = useState(true);
   const [score, setScore] = useState(0);
 
+  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+
+
   const generateQuestions = () => {
+    setShowCorrectAnswer(false)
     setShowStart(false);
     setCorrect(true);
     setAnswer('');
@@ -92,7 +96,7 @@ const PeriodicTableGame = () => {
     e.preventDefault();
     if (mcQ[0].answerOptions[answer].isCorrect) {
       setScore(score+1);
-      generateQuestions();
+      setShowCorrectAnswer(!showCorrectAnswer);
     } else {
       setCorrect(false);
       setTimeout(() => {
@@ -112,35 +116,43 @@ const PeriodicTableGame = () => {
         onClick={generateQuestions}
         >Start</button>
       }
-      {
-        Object.keys(mcQ).length !== 0 && (
-        <div className='periodic_table-game-choice'>
-          <h3>Score: {score}</h3>
-          <p>{mcQ[0].question}</p>
-          <p>{mcQ[0].questionDetails}</p>
-            <form name='answerOptions'className="answer_div" onSubmit={handleFormSubmit}>
-            {mcQ[0].answerOptions.map((answerOption, index) => (
-                <div className='periodic_table-game-choice-content'>
-                  <input
-                      id={index}
-                      type="radio"
-                      checked={index === answer}
-                      onChange={() => setAnswer(index)}
-                      value={answerOption.answerText}
-                      name="answerOption"
-                  />
-                  {answerOption.answerText}
-                </div>
-            ))}
-            <input disabled={answer===''} className='game-button' type="submit" value="Submit" />
-            <div className='game_message_content'>
-                {!correct && <p>Not quite. Please try again!</p>}
-            </div>
-          </form>
+      <h3>Score: {score}</h3>
+      <div className={`card ${showCorrectAnswer ? 'flip' : ''}`}>
+        {
+          Object.keys(mcQ).length !== 0 && (
+          <div className='periodic_table-game-choice'>
+            <p>{mcQ[0].question}</p>
+            <p>{mcQ[0].questionDetails}</p>
+              <form name='answerOptions'className="answer_div" onSubmit={handleFormSubmit}>
+              {mcQ[0].answerOptions.map((answerOption, index) => (
+                  <div className='periodic_table-game-choice-content'>
+                    <input
+                        id={index}
+                        type="radio"
+                        checked={index === answer}
+                        onChange={() => setAnswer(index)}
+                        value={answerOption.answerText}
+                        name="answerOption"
+                    />
+                    {answerOption.answerText}
+                  </div>
+              ))}
+              <input disabled={answer===''} className='submit_answer_button' type="submit" value="Submit" />
+              <div className='game_message_content'>
+                  {!correct && <p>Not quite. Please try again!</p>}
+              </div>
+            </form>
+          </div>
+          )
+        }
+        <div className='answer_card'>
+          <p>You got it right!!</p>
+          <button 
+            className='next_question_button'
+            onClick={generateQuestions}
+            >Next</button>
         </div>
-        )
-      }
-      
+      </div>
     </div>
   );
 }

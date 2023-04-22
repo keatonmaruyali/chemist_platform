@@ -12,12 +12,34 @@
     padding: 3vh;
   }
 
-.periodic_table-game-choice > h3 {
-    font-size: 2vh;
-    padding: 1vh 0 0 2vh;
+.card {
+    transform-style: preserve-3d;
+    transition: 150ms;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    transform-origin: 35% 35%;
 }
 
-.periodic_table-game-choice > p {
+
+.card .periodic_table-game-choice,
+.card .answer_card {
+    background: rgb(211, 210, 210);
+    width: 60%;
+    border-radius: 2rem;
+    padding: 2vh;
+    margin-left: 3vh;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+    backface-visibility: hidden;
+    position: absolute;
+    height: 50vh;
+}
+
+.card.flip,
+.card .answer_card {
+    transform: rotateY(180deg);
+  }
+
+.periodic_table-game-choice > p,
+.answer_card > p {
     padding: 1vh 0 0 17vh;
     font-size: 2vh;
     white-space: pre;
@@ -42,11 +64,21 @@ input[type="radio"]{
     cursor: pointer;
 }
 
-.game-button {
+.submit_answer_button {
     font-size: 1.5vh;
     margin: 0.5rem;
     padding: 0.75rem 1.5rem 0.75rem 1.5rem;
     cursor: pointer;
+}
+
+.next_question_button {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.5vh;
 }
 
 .game_message_content{

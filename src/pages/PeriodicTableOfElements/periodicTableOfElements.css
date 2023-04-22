@@ -43,6 +43,6 @@
 .periodic__table__page-content {
     margin-top: 1vh;
     height: calc(100% - 1vh);
-    background: rgba(224, 222, 222, 0.841);
+    /* background: rgba(224, 222, 222, 0.841); */
     border-radius: 1rem;
 }
