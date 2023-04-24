@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './periodicTableGame.css';
-
 import { elements } from "../../data/_data";
+import ElementDetails from '../ElementDetails/ElementDetails';
+import './periodicTableGame.css';
 
 const AllElements = elements.elements;
 const questionKeys = elements.questionKeys;
-console.log(questionKeys);
 
 const generateRandomNumbers = (times) => {
   const randoms = []
@@ -37,35 +36,38 @@ const questionKey = () => {
 };
 
 const PeriodicTableGame = () => {
-  const [answer, setAnswer] = useState('');
-  const [mcQ, setMcQ] = useState({});
-  const [showStart, setShowStart] = useState(true);
-  const [correct, setCorrect] = useState(true);
+  const [answerInput, setAnswerInput] = useState('');
+  const [mcQuestions, setMcQuestions] = useState({});
+  const [showStartButton, setShowStartButton] = useState(true);
+  const [isCorrect, setIsCorrect] = useState(true);
   const [score, setScore] = useState(0);
 
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+  const [correctAnswerDetails, setCorrectAnswerDetails] = useState({});
 
 
   const generateQuestions = () => {
-    setShowCorrectAnswer(false)
-    setShowStart(false);
-    setCorrect(true);
-    setAnswer('');
+    setShowCorrectAnswer(false);
+    setShowStartButton(false);
+    setIsCorrect(true);
+    setAnswerInput('');
+    setCorrectAnswerDetails({});
 
     const randNum = generateRandomNumbers(4);
-    const ranIndex = shuffle();
+    const ranAnswerIndex = shuffle();
 
     const questionObj = questionKey();
     let answerOptions = [];
     let questionDetails = '';
 
     for (const [index, value] of randNum.entries()) {
-      if (index == ranIndex) {
+      if (index == ranAnswerIndex) {
         answerOptions.push({
           'answerText': AllElements[value][questionObj[0]],
           'isCorrect': true,
         })
         questionDetails = AllElements[value][questionObj[1]];
+        setCorrectAnswerDetails(AllElements[value]);
       } else {
         answerOptions.push({
           'answerText': AllElements[value][questionObj[0]],
@@ -81,7 +83,7 @@ const PeriodicTableGame = () => {
         'answerOptions': answerOptions,
       }
     ];
-    setMcQ(questions);
+    setMcQuestions(questions);
   };
   
   const resetInput = () => {
@@ -94,24 +96,24 @@ const PeriodicTableGame = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (mcQ[0].answerOptions[answer].isCorrect) {
+    if (mcQuestions[0].answerOptions[answerInput].isCorrect) {
       setScore(score+1);
       setShowCorrectAnswer(!showCorrectAnswer);
     } else {
-      setCorrect(false);
+      setIsCorrect(false);
       setTimeout(() => {
-        setCorrect(true);
+        setIsCorrect(true);
       }, 1500);
     }
   };
 
   useEffect(() => {
     resetInput();
-  }, [mcQ]);
+  }, [mcQuestions]);
 
   return (
     <div className='periodic_table-game-container'>
-      {showStart && <button 
+      {showStartButton && <button 
         className='start-button'
         onClick={generateQuestions}
         >Start</button>
@@ -119,34 +121,39 @@ const PeriodicTableGame = () => {
       <h3>Score: {score}</h3>
       <div className={`card ${showCorrectAnswer ? 'flip' : ''}`}>
         {
-          Object.keys(mcQ).length !== 0 && (
+          Object.keys(mcQuestions).length !== 0 && (
           <div className='periodic_table-game-choice'>
-            <p>{mcQ[0].question}</p>
-            <p>{mcQ[0].questionDetails}</p>
+            <p>{mcQuestions[0].question}</p>
+            <p>{mcQuestions[0].questionDetails}</p>
               <form name='answerOptions'className="answer_div" onSubmit={handleFormSubmit}>
-              {mcQ[0].answerOptions.map((answerOption, index) => (
+              {mcQuestions[0].answerOptions.map((answerOption, index) => (
                   <div className='periodic_table-game-choice-content'>
                     <input
                         id={index}
                         type="radio"
-                        checked={index === answer}
-                        onChange={() => setAnswer(index)}
+                        checked={index === answerInput}
+                        onChange={() => setAnswerInput(index)}
                         value={answerOption.answerText}
                         name="answerOption"
                     />
                     {answerOption.answerText}
                   </div>
               ))}
-              <input disabled={answer===''} className='submit_answer_button' type="submit" value="Submit" />
+              <input disabled={answerInput===''} className='submit_answer_button' type="submit" value="Submit" />
               <div className='game_message_content'>
-                  {!correct && <p>Not quite. Please try again!</p>}
+                  {!isCorrect && <p>Not quite. Please try again!</p>}
               </div>
             </form>
           </div>
           )
         }
         <div className='answer_card'>
-          <p>You got it right!!</p>
+          <p>Correct!</p>
+          {
+            showCorrectAnswer && (
+              <ElementDetails elementDetails={correctAnswerDetails}/>
+            )
+          }
           <button 
             className='next_question_button'
             onClick={generateQuestions}

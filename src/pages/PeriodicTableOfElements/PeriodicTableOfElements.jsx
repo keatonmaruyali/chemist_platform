@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PeriodicTable from '../../components/PeriodicTable/PeriodicTable';
 import PeriodicTableGame from '../../components/PeriodicTableGame/PeriodicTableGame';
+import { AiOutlineTable } from 'react-icons/ai';
+import { TbDeviceGamepad } from 'react-icons/tb';
 import './periodicTableOfElements.css';
 
 
@@ -31,10 +33,15 @@ const PeriodicTableOfElements = () => {
   return (
     <div className='periodic__table__page-container'>
       <div className='periodic__table__page-nav'>
-        {/* <h2>Periodic Table of Elements</h2> */}
         <nav className='periodic__table__page-nav-content'>
-          <div id="periodic-table" onClick={handleOnClick}>Periodic Table</div>
-          <div id="game" onClick={handleOnClick}>Game</div>
+          <div id="periodic-table" onClick={handleOnClick}>
+            <AiOutlineTable className='periodic__table-icon' />
+            Periodic Table
+          </div>
+          <div id="game" onClick={handleOnClick}>
+            <TbDeviceGamepad className='game-icon'/>
+            Game
+          </div>
         </nav>
       </div>
       <div className='periodic__table__page-content'>  

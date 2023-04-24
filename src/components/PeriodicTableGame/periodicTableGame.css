@@ -7,7 +7,7 @@
     margin: 0;
     position: absolute;
     top: 40%;
-    left: 54%;
+    left: 35%;
     font-size: 2vh;
     padding: 3vh;
   }
@@ -30,7 +30,7 @@
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
     backface-visibility: hidden;
     position: absolute;
-    height: 50vh;
+    height: 60vh;
 }
 
 .card.flip,
@@ -38,7 +38,12 @@
     transform: rotateY(180deg);
   }
 
-.periodic_table-game-choice > p,
+.periodic_table-game-choice > p {
+    padding: 4vh 0 0 17vh;
+    font-size: 2vh;
+    white-space: pre;
+}
+
 .answer_card > p {
     padding: 1vh 0 0 17vh;
     font-size: 2vh;
@@ -83,4 +88,35 @@ input[type="radio"]{
 
 .game_message_content{
     color: red;
+}
+
+.answer_card #element_card {
+    width: 25vw;
+    height: max-content;
+    top: 17%;
+    left: 25%;
+    position: fixed;
+    background: white;
+    z-index: 1;
+    border-radius: 2rem;
+}
+
+.answer_card #element-box .symbol {
+    font-size: 3vw;
+  }
+  
+.answer_card #element-box .number {
+    font-size: 0.75vw;
+}
+
+.answer_card #element-box .element-name {
+    font-size: 1vw;
+}
+
+.answer_card #information {
+    font-size: 1vw;
+}
+
+.answer_card .cat_name {
+    font-size: 1rem;
 }

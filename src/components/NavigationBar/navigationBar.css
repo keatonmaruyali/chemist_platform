@@ -1,9 +1,10 @@
 .nav_bar {
-    background: rgba(108, 234, 112, 0.841);
+    background: linear-gradient(0, rgb(61, 71, 99), rgb(31, 36, 50));
     text-align: center;
-    height: 4.5vh;
-    padding-top: 2vh;
+    height: 6vh;
+    padding-top: 3.5vh;
 }
+
 
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ============ */
 @media screen and (max-width: 1024px){

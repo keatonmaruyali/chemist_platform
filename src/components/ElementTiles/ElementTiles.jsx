@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { elements } from "../../data/_data";
-import './elements.css';
+import './elementTiles.css';
 
-export default class Element extends Component {
+export default class ElementTiles extends Component {
   state = {
     hover: false,
   };
@@ -24,6 +24,7 @@ export default class Element extends Component {
     let element = elements.elements[num];
     return (
       <div
+        key={`element_${element.number}`}
         title={element.name}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
@@ -35,7 +36,6 @@ export default class Element extends Component {
         <div className="number">{element.number}</div>
         <div className="symbol">{element.symbol}</div>
         <div className="element-name">{element.name}</div>
-        {/* <div className="element-name">This is a message.</div> */}
       </div>
     );
   }

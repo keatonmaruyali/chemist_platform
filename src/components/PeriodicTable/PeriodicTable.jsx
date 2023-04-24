@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { elements } from "../../data/_data";
-import Element from "../Elements/Element";
+import ElementTiles from "../ElementTiles/ElementTiles";
+import ElementDetails from "../ElementDetails/ElementDetails";
 import './periodicTable.css';
-import "../Elements/elements.css";
+import "../ElementTiles/elementTiles.css";
 
 
 const PeriodicTable = () => {
@@ -31,7 +32,7 @@ const PeriodicTable = () => {
   const populateElements = (start, end) => {
     let items = []
     for (let i = start; i <= end; i++) {
-      items.push(<Element showInfo={showInfo} num={i} />)
+      items.push(<ElementTiles key={`element_${i}`} showInfo={showInfo} num={i} />)
     }
     return items
   }
@@ -46,23 +47,6 @@ const PeriodicTable = () => {
   useEffect(() => {
     document.addEventListener("click", mouseClickHandler);
   })
-
-  let {
-    name,
-    summary,
-    symbol,
-    category,
-    number,
-    source,
-    appearance,
-    atomic_mass,
-    molar_heat,
-    density,
-    melt,
-    boil
-  } = elementDetails;
-
-
 
   return (
       <div className="periodictablewrapper">
@@ -83,42 +67,9 @@ const PeriodicTable = () => {
        
         {showElementCard && (
           <div className="bg">
-            <div id="element_card">
-              <div id="element-box" className={`${category}`}>
-                <div
-                  onClick={closeInfo}
-                  className="close-button"
-                  title="Close Info"
-                >
-                  Close [&times;]
-                </div>
-                <div className="number">{number}</div>
-                <div className="symbol">{symbol}</div>
-                <div className="element-name">{name}</div>
-              </div>
-              <div id="information">
-                <div>
-                  <h1 className="big_title">{name}</h1>
-                  <span className={`cat_name ${category}`}>{category}</span>
-                  {appearance && (
-                    <div className="appearance">
-                      <strong>Appearance:</strong> {appearance}
-                    </div>
-                  )}
-                  <div className="atom_info">
-                    <span>Atomic Mass: {atomic_mass} | </span>
-                    <span>Density: {density}</span>
-                    {molar_heat && <span> | Molar Heat: {molar_heat}</span>}
-                    {melt && <span> | Melt: {melt}K</span>}
-                    {boil && <span> | Boil: {boil}K</span>}
-                  </div>
-                  <div>{summary}</div>
-                  <div className="more_info">
-                    <a target={source} href={source}>More Info</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+           <ElementDetails
+             elementDetails={elementDetails}
+             closeInfo={closeInfo}/>
           </div>
           )}
       </div>

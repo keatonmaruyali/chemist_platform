@@ -6,31 +6,28 @@
 }
 
 .periodic__table__page-nav {
-    margin-top: 1vh;
     height: calc(100% - 1vh);
 }
 
 .periodic__table__page-nav-content {
-    background: rgba(108, 234, 112, 0.841);
-    height: calc(100% - 4vh);
-    border-radius: 1rem;
-    padding: 2vh 1vh 2vh 1vh;
+    background: linear-gradient(0, rgb(101, 118, 165), rgb(61, 71, 99));
+    color: rgb(255, 255, 255);
+    height: 85vh;
+    padding: 2vh 0 2vh 0;
 }
 
 
 .periodic__table__page-nav-content > div {
-    background: rgba(3, 145, 22, 0.3);
-    padding: 1vh;
+    padding: 1vh 0 1vh 2vh;
     margin-bottom: 1vh;
-    border-radius: 2rem;
     font-size: 2vh;
-    text-align: center;
+    /* text-align: center; */
 }
 
 
 .periodic__table__page-nav-content > div:hover {
-    background: rgba(14, 75, 1, 0.3);
-    color: rgb(241, 246, 242);
+    background: rgba(16, 162, 210, 0.356);
+    color: rgb(3, 3, 3);
     transition: all 400ms ease;
     cursor: pointer;
 }
@@ -43,6 +40,12 @@
 .periodic__table__page-content {
     margin-top: 1vh;
     height: calc(100% - 1vh);
-    /* background: rgba(224, 222, 222, 0.841); */
     border-radius: 1rem;
+}
+
+
+.periodic__table-icon,
+.game-icon {
+    margin-right: 1vh;
+    vertical-align: top;
 }
