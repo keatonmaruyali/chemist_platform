@@ -12,7 +12,7 @@ const Chemspider = () => {
   async function getCompounds() {
     setLoading(true);
     const response = await fetch(
-      `/search_compound/${encodeURIComponent(searchInput)}`
+      `/api/search_compound/${encodeURIComponent(searchInput)}`
     );
     const data = await response.json();
     setSearchedCompounds(data[0]);

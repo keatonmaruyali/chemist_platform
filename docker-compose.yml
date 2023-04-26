@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: chemist_platform_backend:dev
+    environment:
+      - FLASK_ENV=development
+    networks:
+      my-network:
+        aliases:
+          - backend
+    expose:
+        - '5000'
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./backend/app:/backend/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: chemist_platform_frontend:dev
+    networks:
+      my-network:
+        aliases:
+          - client
+    ports:
+      - '3000:3000'
+
+  nginx:
+    depends_on:
+      - backend
+      - frontend
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3050:80"
+    networks:
+            - my-network
+
+networks:
+    my-network:

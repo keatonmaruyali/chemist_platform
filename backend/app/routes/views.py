@@ -17,14 +17,8 @@ from backend.app.services import chemspipy
 #     return render_template("about.html")
 
 
-@app.route("/search_compound/<compound>", methods=['GET'])
+@app.route("/api/search_compound/<compound>", methods=['GET'])
 def search_compound(compound):
     if request.method == 'GET':
         results = chemspipy.search_compound_name(compound)
         return jsonify([results])
-
-        # return Response(
-        #     'SUCCESS',
-        #     # results,
-        #     status=200,
-        # )
