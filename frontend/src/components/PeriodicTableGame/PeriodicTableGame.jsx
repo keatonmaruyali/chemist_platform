@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import data from "../../data/_data.json";
 import { elements } from "../../data/_data";
 import ElementDetails from '../ElementDetails/ElementDetails';
 import './periodicTableGame.css';
 
-const AllElements = elements.elements;
+const AllElements = data.elements;
 const questionKeys = elements.questionKeys;
 
 const generateRandomNumbers = (times) => {

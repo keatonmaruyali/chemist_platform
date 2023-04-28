@@ -1,6 +1,6 @@
 .home__container {
     display: grid;
-    grid-template-columns: repeat(2, 49vw);
+    grid-template-columns: 78vw 20vw;
     gap: 1vw;
     padding-top: 2vh;
     height: 86.5vh;

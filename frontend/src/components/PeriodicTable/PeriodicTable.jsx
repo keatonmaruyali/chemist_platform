@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { elements } from "../../data/_data";
+import data from "../../data/_data.json";
+// import { elements } from "../../data/_data";
 import ElementTiles from "../ElementTiles/ElementTiles";
 import ElementDetails from "../ElementDetails/ElementDetails";
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import './periodicTable.css';
 import "../ElementTiles/elementTiles.css";
 
@@ -9,8 +11,10 @@ import "../ElementTiles/elementTiles.css";
 const PeriodicTable = () => {
   const [showElementCard, setShowElementCard] = useState(false);
   const [elementDetails, setElementDetails] = useState({});
+  const [electronegative, setElectronegative] = useState(false);
 
-  const alElements = elements.elements;
+  const alElements = data.elements;
+
   const showInfo = num => {
     setElementDetails(alElements[num]);
     setShowElementCard(true);
@@ -32,7 +36,14 @@ const PeriodicTable = () => {
   const populateElements = (start, end) => {
     let items = []
     for (let i = start; i <= end; i++) {
-      items.push(<ElementTiles key={`element_${i}`} showInfo={showInfo} num={i} />)
+      items.push(
+        <ElementTiles
+          key={`element_${i}`}
+          showInfo={showInfo}
+          num={i}
+          electronegative={electronegative}
+        />
+      )
     }
     return items
   }
@@ -50,6 +61,10 @@ const PeriodicTable = () => {
 
   return (
       <div className="periodictablewrapper">
+        <ToggleSwitch
+          label="Electronegativity"
+          electronegative={electronegative}
+          showElectronegative={setElectronegative} />
         <div id="periodictable">
           {/* Elements 1-4 */}
           {populateElements(1, 4)}

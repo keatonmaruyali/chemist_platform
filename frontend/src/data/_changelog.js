@@ -52,5 +52,21 @@ export const changeLogDetails = [
         details to periodic table quiz game.
       `
     },
+    {
+      id: 9,
+      date: 'April 26, 2023',
+      changes: `
+        Dockerized application. Separate container for React frontend, Flask backend, and
+        Nginx.
+      `
+    },
+    {
+      id: 10,
+      date: 'April 27, 2023',
+      changes: `
+        Add electronegativity properties to periodic table of elements, triggered
+        by a toggle switch.
+      `
+    },
   ];
   

@@ -1,42 +1,44 @@
-import React, { Component } from "react";
-import { elements } from "../../data/_data";
+import React from "react";
+import data from "../../data/_data.json";
 import './elementTiles.css';
 
-export default class ElementTiles extends Component {
-  state = {
-    hover: false,
+
+const ElementTiles = ({ showInfo, num, electronegative}) => {
+  const element = data.elements[num];
+
+  const openInfo = (event) => {
+    showInfo(num);
   };
 
-  openInfo = (event) => {
-    this.props.showInfo(this.props.num);
-  };
-
-  onMouseEnter = (event) => {
-    this.setState({ hover: true });
-  };
-
-  onMouseLeave = (event) => {
-    this.setState({ hover: false });
-  };
-
-  render() {
-    let { num } = this.props;
-    let element = elements.elements[num];
-    return (
-      <div
-        key={`element_${element.number}`}
-        title={element.name}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
-        onClick={this.openInfo}
-        className={`element element-${num} ${element.category} ${
-          this.state.hover ? "active" : ""
-        }`}
-      >
-        <div className="number">{element.number}</div>
-        <div className="symbol">{element.symbol}</div>
-        <div className="element-name">{element.name}</div>
-      </div>
-    );
+  {
+    if (electronegative) {
+      return (
+        <div
+          key={`element_en_${element.number}`}
+          title={element.name}
+          onClick={openInfo}
+          className={`element_en element-${num} ${element.category}`}
+        >
+          <div className="number">{element.number}</div>
+          <div className="symbol">{element.symbol}</div>
+          <div className="en_value">{element.electronegativity_pauling}</div>
+        </div>
+      )
+    } else {
+      return (
+        <div
+          key={`element_${element.number}`}
+          title={element.name}
+          onClick={openInfo}
+          className={`element element-${num} ${element.category}`}
+        >
+          <div className="number">{element.number}</div>
+          <div className="symbol">{element.symbol}</div>
+          <div className="element-name">{element.name}</div>
+        </div>
+      )
+    }
   }
 }
+
+export default ElementTiles
